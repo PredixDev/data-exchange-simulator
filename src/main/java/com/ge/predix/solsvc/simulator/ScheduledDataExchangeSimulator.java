@@ -27,6 +27,7 @@ import org.apache.http.message.BasicHeader;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -39,7 +40,6 @@ import com.ge.predix.entity.putfielddata.PutFieldDataRequest;
 import com.ge.predix.entity.timeseries.datapoints.ingestionrequest.Body;
 import com.ge.predix.entity.timeseries.datapoints.ingestionrequest.DatapointsIngestion;
 import com.ge.predix.solsvc.ext.util.JsonMapper;
-import com.ge.predix.solsvc.fdh.client.config.IFdhRestConfig;
 import com.ge.predix.solsvc.restclient.impl.RestClient;
 import com.ge.predix.solsvc.simulator.types.SimulatorDataNode;
 
@@ -60,11 +60,9 @@ public class ScheduledDataExchangeSimulator
     private JsonMapper                     mapper;
 
     @Autowired
-    private IFdhRestConfig                 fdhRestCloudConfig;
-
-    @Autowired
     private RestClient                     restClient;
 
+    @Value("${predix.dataexchange.url}")
     private String                         serviceURL;
 
     /**
@@ -74,7 +72,6 @@ public class ScheduledDataExchangeSimulator
     public void init()
     {
         nodeList = new ArrayList<SimulatorDataNode>(10);
-        this.serviceURL = this.fdhRestCloudConfig.getPutFieldDataEndPoint();
     }
 
     /**
@@ -124,7 +121,7 @@ public class ScheduledDataExchangeSimulator
         }
         catch (Throwable e)
         {
-            log.error("unable to simulate data for nodelist=" + nodeList);
+            log.error("unable to simulate data for nodelist=" + nodeList,e);
             throw new RuntimeException("unable to simulate data for nodelist=" + nodeList, e);
         }
 
@@ -199,7 +196,7 @@ public class ScheduledDataExchangeSimulator
         headers.add(new BasicHeader("Content-Type", "application/json"));  //$NON-NLS-2$
         if ( this.serviceURL != null )
         {
-            log.debug("Service URL : " + this.serviceURL + " Data : " + content);
+            log.info("Service URL : " + this.serviceURL + " Data : " + content);
             try (CloseableHttpResponse response = this.restClient.post(this.serviceURL, content, headers);)
             {
                 log.debug(

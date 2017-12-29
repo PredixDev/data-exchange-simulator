@@ -3,7 +3,7 @@ applications:
     buildpack: java_buildpack
     memory: 512M
     timeout: 180
-    path: target/data-exchange-simulator-1.0.39.jar
+    path: target/data-exchange-simulator-1.0.41.jar
     instances : 1
     services:
         - {assetService}
@@ -14,9 +14,7 @@ env:
     predix_uaa_name: {uaaService}
     predix_asset_name: {assetService}
     predix_oauth_clientId : {clientId}:{secret}
-    predix_fdh_restHost : {dxRestHost}
-    predix_fdh_restProtocol : https
-    predix_fdh_restPort: 443
+    predix_dataexchange_url : https://{dxRestHost}/services/fdhrouter/fielddatahandler/putfielddata
     #logging - see application-cloud.properties
     logging_level_root: INFO
     logging_level_org_springframework: INFO
