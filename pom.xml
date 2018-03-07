@@ -5,7 +5,7 @@
 
 	<groupId>com.ge.predix.solsvc</groupId>
 	<artifactId>data-exchange-simulator</artifactId>
-	<version>1.0.44</version>
+	<version>1.0.59</version>
 	<packaging>jar</packaging>
 
 	<name>data-exchange-simulator</name>
@@ -19,15 +19,15 @@
 	</parent>
 
 	<properties>
+		<predix-rest-client.version>2.3.72</predix-rest-client.version>
+		<ext-model.version>2.3.49</ext-model.version>
+		<ext-util.version>2.3.49</ext-util.version>
+
+		<httpcomponents.version>4.5.5</httpcomponents.version>
+
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>	
-
-		<predix-rest-client.version>2.3.8</predix-rest-client.version>
-		<ext-model.version>2.3.8</ext-model.version>
-		<ext-util.version>2.3.8</ext-util.version>
-		
-		<httpcomponents.version>4.5.5</httpcomponents.version>
 		
 		<maven-failsafe-plugin.version>2.17</maven-failsafe-plugin.version>
 		<maven-surefire-plugin.version>2.16</maven-surefire-plugin.version>
