@@ -5,7 +5,7 @@
 
 	<groupId>com.ge.predix.solsvc</groupId>
 	<artifactId>data-exchange-simulator</artifactId>
-	<version>1.0.65</version>
+	<version>1.0.66</version>
 	<packaging>jar</packaging>
 
 	<name>data-exchange-simulator</name>
@@ -20,8 +20,8 @@
 
 	<properties>
 		<predix-rest-client.version>2.3.86</predix-rest-client.version>
-		<ext-model.version>2.4.3</ext-model.version>
-		<ext-util.version>2.4.3</ext-util.version>
+		<ext-model.version>2.4.4</ext-model.version>
+		<ext-util.version>2.4.4</ext-util.version>
 
 		<httpcomponents.version>4.5.5</httpcomponents.version>
 
