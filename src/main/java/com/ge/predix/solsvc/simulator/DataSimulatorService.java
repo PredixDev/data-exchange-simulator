@@ -28,8 +28,7 @@ public class DataSimulatorService {
 	 * @param dataNodes -
 	 * @return -
 	 */
-	@SuppressWarnings("nls")
-    @Autowired
+	@Autowired
 	@RequestMapping(value = "/changesimulatorconfig", method = RequestMethod.POST)
     public @ResponseBody DataSimulatorResponse changeSimulatorConfig(@RequestBody List<SimulatorDataNode> dataNodes)
     {
@@ -61,8 +60,7 @@ public class DataSimulatorService {
 	/**
 	 * @return -
 	 */
-	@SuppressWarnings("nls")
-    @RequestMapping(value = "/simulatealarm", method = RequestMethod.GET)
+	@RequestMapping(value = "/simulatealarm", method = RequestMethod.GET)
 	public @ResponseBody String simulateAlarm() {
 		for (SimulatorDataNode node: ScheduledDataExchangeSimulator.getNodeList()) {
 			node.setSimulateAlarm(Boolean.TRUE);

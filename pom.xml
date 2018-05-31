@@ -5,7 +5,7 @@
 
 	<groupId>com.ge.predix.solsvc</groupId>
 	<artifactId>data-exchange-simulator</artifactId>
-	<version>1.0.66</version>
+	<version>1.0.68</version>
 	<packaging>jar</packaging>
 
 	<name>data-exchange-simulator</name>
@@ -19,9 +19,9 @@
 	</parent>
 
 	<properties>
-		<predix-rest-client.version>2.3.86</predix-rest-client.version>
-		<ext-model.version>2.4.4</ext-model.version>
-		<ext-util.version>2.4.4</ext-util.version>
+		<predix-websocket-client.version>2.1.61</predix-websocket-client.version>
+		<ext-model.version>2.4.5</ext-model.version>
+		<ext-util.version>2.4.5</ext-util.version>
 
 		<httpcomponents.version>4.5.5</httpcomponents.version>
 
@@ -40,7 +40,7 @@
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
 			<version>${httpcomponents.version}</version>
-			</dependency>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-rest</artifactId>
@@ -51,8 +51,8 @@
 		</dependency>
 		<dependency>
 			<groupId>com.ge.predix.solsvc</groupId>
-			<artifactId>predix-rest-client</artifactId>
-			<version>${predix-rest-client.version}</version>
+			<artifactId>predix-websocket-client</artifactId>
+			<version>${predix-websocket-client.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.ge.predix.solsvc</groupId>
@@ -69,6 +69,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
