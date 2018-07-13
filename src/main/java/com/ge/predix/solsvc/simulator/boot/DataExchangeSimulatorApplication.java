@@ -1,8 +1,5 @@
 package com.ge.predix.solsvc.simulator.boot;
 
-import java.util.Arrays;
-import java.util.Iterator;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -14,105 +11,88 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-import org.springframework.core.env.MutablePropertySources;
-import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.web.context.support.StandardServletEnvironment;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 /**
  * 
- * @author 212546387 -
+ * @author developer relations -
  */
 @SpringBootApplication
-@EnableScheduling
-@ComponentScan(basePackages = { 
-		"com.ge.predix.solsvc.simulator", 
-		"com.ge.predix.solsvc.fdh.handler",
-		"com.ge.predix.solsvc.websocket.client",
-		"com.ge.predix.solsvc.websocket.config",
-		"com.ge.predix.solsvc.ext.util",
-		"com.ge.predix.solsvc.restclient"})
-@EnableAutoConfiguration(exclude = { DataSourceAutoConfiguration.class,
-		JpaRepositoriesAutoConfiguration.class,
-		PersistenceExceptionTranslationAutoConfiguration.class })
-public class DataExchangeSimulatorApplication {
+@ComponentScan(basePackages =
+{
+        "com.ge.predix.solsvc.simulator", "com.ge.predix.solsvc.ext.util", "com.ge.predix.solsvc.restclient",
+        "com.ge.predix.solsvc.websocket.client", "com.ge.predix.solsvc.websocket.config"
+})
 
-	private static final Logger log = LoggerFactory.getLogger(DataExchangeSimulatorApplication.class);
+@EnableAutoConfiguration(exclude =
+{
+        DataSourceAutoConfiguration.class, JpaRepositoriesAutoConfiguration.class,
+        PersistenceExceptionTranslationAutoConfiguration.class
+})
 
-	/**
-	 * @param args
-	 *            -
-	 */
-	public static void main(String[] args) {
-		Logger log = LoggerFactory.getLogger(DataExchangeSimulatorApplication.class);
+@EnableAsync
 
-		SpringApplication springApplication = new SpringApplication(DataExchangeSimulatorApplication.class);
-		ApplicationContext ctx = springApplication.run(args);
+public class DataExchangeSimulatorApplication
+{
 
-		log.debug("Let's inspect the beans provided by Spring Boot:"); //$NON-NLS-1$
+    private static final Logger log = LoggerFactory.getLogger(DataExchangeSimulatorApplication.class);
 
-		String[] beanNames = ctx.getBeanDefinitionNames();
-		Arrays.sort(beanNames);
-		for (String beanName : beanNames) {
-			log.info(beanName);
-		}
+    /**
+     * @param args
+     *            -
+     */
+    public static void main(String[] args)
+    {
+        @SuppressWarnings(
+        {
+                "hiding", "unused"
+        })
+        Logger log = LoggerFactory.getLogger(DataExchangeSimulatorApplication.class);
 
-		// log.info("Let's inspect the profiles provided by Spring Boot:");
-		String profiles[] = ctx.getEnvironment().getActiveProfiles();
-		for (int i = 0; i < profiles.length; i++)
-			log.info("profile=" + profiles[i]); //$NON-NLS-1$
+        SpringApplication springApplication = new SpringApplication(DataExchangeSimulatorApplication.class);
+        @SuppressWarnings(
+        {
+                "resource", "unused"
+        })
+        ApplicationContext ctx = springApplication.run(args);
+        // System.gc();
+        // printMemory();
 
-		log.info("Let's inspect the properties provided by Spring Boot:"); //$NON-NLS-1$
-		MutablePropertySources propertySources = ((StandardServletEnvironment) ctx.getEnvironment())
-				.getPropertySources();
-		Iterator<org.springframework.core.env.PropertySource<?>> iterator = propertySources.iterator();
-		while (iterator.hasNext()) {
-			Object propertySourceObject = iterator.next();
-			if (propertySourceObject instanceof org.springframework.core.env.PropertySource) {
-				org.springframework.core.env.PropertySource<?> propertySource = (org.springframework.core.env.PropertySource<?>) propertySourceObject;
-				log.debug("propertySource=" + propertySource.getName() + " values=" + propertySource.getSource() //$NON-NLS-1$ //$NON-NLS-2$
-						+ "class=" + propertySource.getClass()); //$NON-NLS-1$
-			}
-		}
+    }
 
-		// Spring is a little bit of a hog on startup, after that it's not too
-		// bad.
-		System.gc();
-		printMemory();
+    /**
+     * -
+     */
+    @SuppressWarnings("nls")
+    public static void printMemory()
+    {
+        Runtime runtime = Runtime.getRuntime();
+        int mb = 1024 * 1024;
 
-	}
+        log.debug("##### Heap utilization statistics [MB] #####");
 
-	/**
-	 * -
-	 */
-	@SuppressWarnings("nls")
-	public static void printMemory() {
-		Runtime runtime = Runtime.getRuntime();
-		int mb = 1024 * 1024;
+        // Print used memory
+        log.debug("Used Memory:" + (runtime.totalMemory() - runtime.freeMemory()) / mb);
 
-		log.debug("##### Heap utilization statistics [MB] #####");
+        // Print free memory
+        log.debug("Free Memory:" + runtime.freeMemory() / mb);
 
-		// Print used memory
-		log.debug("Used Memory:" + (runtime.totalMemory() - runtime.freeMemory()) / mb);
+        // Print total available memory
+        log.debug("Total Memory:" + runtime.totalMemory() / mb);
 
-		// Print free memory
-		log.debug("Free Memory:" + runtime.freeMemory() / mb);
+        // Print Maximum available memory
+        log.debug("Max Memory:" + runtime.maxMemory() / mb);
+    }
 
-		// Print total available memory
-		log.debug("Total Memory:" + runtime.totalMemory() / mb);
-
-		// Print Maximum available memory
-		log.debug("Max Memory:" + runtime.maxMemory() / mb);
-	}
-
-	/**
-	 * Add this bean or the @PropertySource above won't kick in
-	 * 
-	 * @return -
-	 */
-	@Bean
-	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
-		return new PropertySourcesPlaceholderConfigurer();
-	}
+    /**
+     * Add this bean or the @PropertySource above won't kick in
+     * 
+     * @return -
+     */
+    @Bean
+    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer()
+    {
+        return new PropertySourcesPlaceholderConfigurer();
+    }
 }

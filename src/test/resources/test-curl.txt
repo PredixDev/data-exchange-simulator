@@ -1,0 +1,44 @@
+# curl to start
+
+curl -X POST \
+  http://localhost:8080/start-simulation \
+  -H 'Cache-Control: no-cache' \
+  -H 'Content-Type: application/json' \
+  -H 'Postman-Token: 83e795fd-bc9a-476f-93e5-085b91b9188a' \
+  -d '{
+	"name": "Deep-Gaussian-Simulation",
+	"tagSet": {
+		"tag": [{
+			"assetId": "Compressor-CMMS-Compressor-2018",
+			"nodeName": "crank-frame-suctionpressure1",
+			"assetNodeSeperator": null,
+			"start":0,
+			"interval":5,
+			"dataType": "DOUBLE",
+			"simulationType": "RANDOM",
+			"range": [{
+				"lowerThreshold": 2.0,
+				"upperThreshold": 2.5,
+				"duration":30
+			}, {
+				"lowerThreshold": 2.0,
+				"upperThreshold": 7.0,
+				"duration":30
+			}]
+		}]
+	}
+}'
+
+# curl to stop
+
+curl -X POST  https://apm-develop-simulator.run.aws-usw02-pr.ice.predix.io/stop-simulation -H -d Swapna-Gaussian-Simulation-1
+
+
+# APM Curl for token :
+curl -X POST \
+  https://d1e53858-2903-4c21-86c0-95edc7a5cef2.predix-uaa.run.aws-usw02-pr.ice.predix.io/oauth/token 
+  -H 'authorization: Basic aW5nZXN0b3IuNTdlNzJkZDMtNmY5ZS00OTMxLWI0YmMtY2QwNGVhYWZmM2UzLjFmN2RiZTEyLTIzNzItNDM5ZS04MTA0LTA2YTVmNDA5OGVjOTo=' \
+  -H 'cache-control: no-cache' \
+  -H 'content-type: application/x-www-form-urlencoded' \
+  -H 'postman-token: 1bee5d55-f772-b77d-3db2-49f60397f474' \
+  -d 'grant_type=password&username=fe067713-0cb2-4038-9b02-a284e85eb00e_ingestor&password=adopPred1xsvc'

@@ -1,0 +1,32 @@
+{
+	"name": "Swapna-Gaussian-Simulation-1",
+	"tagSet": [{
+		"tag": [{
+			"assetId": "Compressor-CMMS-Compressor-2018",
+			"nodeName": "SuctionPressure",
+			"assetNodeSeperator": null,
+			"dataType": "DOUBLE",
+			"simulationType": "RANDOM",
+			"range": [{
+				"lowerThreshold": 2.0,
+				"upperThreshold": 2.5
+			}, {
+				"lowerThreshold": 2.0,
+				"upperThreshold": 7.0
+			}]
+		}],
+		"subscription": [{
+			"start": 0,
+			"durationType": "FIXED",
+			"minDuration": 10,
+			"maxDuration": 15,
+			"interval": 2
+		}, {
+			"start": 0,
+			"durationType": "SPIKE",
+			"minDuration": 10,
+			"maxDuration": 35,
+			"interval": 2
+		}]
+	}]
+}

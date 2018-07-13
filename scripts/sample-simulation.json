@@ -1,0 +1,33 @@
+{
+  "name": "Sample-Random-Simulation-1",
+  "tagSet": {
+      "tag": [
+        {
+          "assetId": "Compressor-CMMS-Compressor-2018",
+          "nodeName": "crank-frame-suctionpressure",
+          "assetNodeSeperator": null,
+          "start": 0,
+          "interval": 3,
+          "dataType": "DOUBLE",
+          "simulationType": "RANDOM",
+          "range": [
+            {
+              "lowerThreshold": 2.5,
+              "upperThreshold": 3.0,
+              "duration": 20
+            }, 
+            {
+              "lowerThreshold": 3.0,
+              "upperThreshold": 4.0,
+              "duration": 10
+            },
+            {
+              "lowerThreshold": 2.5,
+              "upperThreshold": 3.0,
+              "duration": 20
+            }
+          ]
+        }
+      ]
+  }
+}
