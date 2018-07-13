@@ -1,3 +1,5 @@
-com.ge.predix.solsvc.simulator
 com.ge.predix.solsvc.simulator.boot
+com.ge.predix.solsvc.simulator.controller
+com.ge.predix.solsvc.simulator.service
+com.ge.predix.solsvc.simulator.thread
 com.ge.predix.solsvc.simulator.types
