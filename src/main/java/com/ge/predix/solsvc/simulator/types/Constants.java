@@ -25,11 +25,11 @@ public class Constants {
 	 */
 	public static String SIMULATOR_DATA_TYPE_LONG = "LONG"; //$NON-NLS-1$
 	
-	// DEFAULT ASSETID.NODENAME Seperator
+	// DEFAULT ASSETID.NODENAME Separator
 	   /**
 	 * 
 	 */
-	public static String DEFAULT_ASSETID_NODENAME_SEPERATOR = "."; //$NON-NLS-1$
+	public static String DEFAULT_ASSETID_NODENAME_SEPARATOR = "."; //$NON-NLS-1$
 	   /**
 	 * 
 	 */

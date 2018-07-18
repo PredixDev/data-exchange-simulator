@@ -5,7 +5,6 @@
         {
           "assetId": "Compressor-CMMS-Compressor-2018",
           "nodeName": "crank-frame-suctionpressure",
-          "assetNodeSeperator": null,
           "start": 0,
           "interval": 3,
           "dataType": "DOUBLE",
@@ -14,17 +13,17 @@
             {
               "lowerThreshold": 2.5,
               "upperThreshold": 3.0,
-              "duration": 20
+              "duration": 30
             }, 
             {
               "lowerThreshold": 3.0,
               "upperThreshold": 4.0,
-              "duration": 10
+              "duration": 9
             },
             {
               "lowerThreshold": 2.5,
               "upperThreshold": 3.0,
-              "duration": 20
+              "duration": 30
             }
           ]
         }

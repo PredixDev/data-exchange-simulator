@@ -152,8 +152,8 @@ public class TimeSeriesIngestionService {
    private Body createTimeseriesRequestBody(Tag tag, double dpValue, long dPTime)
    {
        Body body = new Body();
-       String seperator = tag.getAssetNodeSeperator() == null ? Constants.DEFAULT_ASSETID_NODENAME_SEPERATOR : tag.getAssetNodeSeperator();
-       body.setName(tag.getAssetId() + seperator + tag.getNodeName());
+       String separator = tag.getAssetNodeSeparator() == null ? Constants.DEFAULT_ASSETID_NODENAME_SEPARATOR : tag.getAssetNodeSeparator();
+       body.setName(tag.getAssetId() + separator + tag.getNodeName());
        List<Object> datapoints = new ArrayList<Object>();
        datapoints.add(getDatapoint(dPTime, dpValue));
 

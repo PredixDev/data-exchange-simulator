@@ -5,7 +5,7 @@
 
 	<groupId>com.ge.predix.solsvc</groupId>
 	<artifactId>data-exchange-simulator</artifactId>
-	<version>1.0.72</version>
+	<version>1.0.73</version>
 	<packaging>jar</packaging>
 
 	<name>data-exchange-simulator</name>
@@ -20,8 +20,8 @@
 
 	<properties>
 		<predix-websocket-client.version>2.1.63</predix-websocket-client.version>
-		<ext-model.version>2.4.8</ext-model.version>
-		<ext-util.version>2.4.8</ext-util.version>
+		<ext-model.version>2.4.9</ext-model.version>
+		<ext-util.version>2.4.9</ext-util.version>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>

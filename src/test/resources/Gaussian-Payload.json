@@ -4,7 +4,7 @@
 		"tag": [{
 			"assetId": "asset-tag1-test-spike1",
 			"nodeName": "CompressionRatio",
-			"assetNodeSeperator": null,
+			"assetNodeSeparator": null,
 			"start":0,
 			"interval":5,
 			"dataType": "DOUBLE",

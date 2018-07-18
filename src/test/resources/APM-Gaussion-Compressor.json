@@ -4,7 +4,7 @@
 		"tag": [{
 			"assetId": "Compressor-CMMS-Compressor-2018",
 			"nodeName": "SuctionPressure",
-			"assetNodeSeperator": null,
+			"assetNodeSeparator": null,
 			"dataType": "DOUBLE",
 			"simulationType": "RANDOM",
 			"range": [{

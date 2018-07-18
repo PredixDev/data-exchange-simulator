@@ -11,7 +11,7 @@ curl -X POST \
 		"tag": [{
 			"assetId": "Compressor-CMMS-Compressor-2018",
 			"nodeName": "crank-frame-suctionpressure1",
-			"assetNodeSeperator": null,
+			"assetNodeSeparator": null,
 			"start":0,
 			"interval":5,
 			"dataType": "DOUBLE",

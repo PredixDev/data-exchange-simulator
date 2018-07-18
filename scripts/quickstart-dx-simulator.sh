@@ -143,7 +143,7 @@ fi
 echo "getPredixScripts"
 getPredixScripts
 #clone the repo itself if running from oneclick script
-getCurrentRepo "true"
+getCurrentRepo
 
 # Prompt user for uaa & ts services
 if [[ "$TRUSTED_ISSUER_ID" == "" ]]; then
