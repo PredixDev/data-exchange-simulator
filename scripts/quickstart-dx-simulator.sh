@@ -24,43 +24,7 @@ function local_read_args() {
     --skip-pull)
       SKIP_PULL=true
     ;;
-	  -cci|--custom-client-id)
-      if [ -n "$2" ]; then
-        UAA_CLIENTID_GENERIC=$2
-        shift
-      else
-        printf 'ERROR: "--custom-client-id" requires a non-empty option argument.\n' >&2
-        exit 1
-      fi
-    ;;
-	  -ccs|--custom-client-secret)
-      if [ -n "$2" ]; then
-        UAA_CLIENTID_GENERIC_SECRET=$2
-        shift
-      else
-        printf 'ERROR: "--custom-client-secret" requires a non-empty option argument.\n' >&2
-        exit 1
-      fi
-    ;;        
-	  -tiu|--trusted-issuer-url)
-      if [ -n "$2" ]; then
-        TRUSTED_ISSUER_ID=$2
-        shift
-      else
-        printf 'ERROR: "--trusted-issuer-url" requires a non-empty option argument.\n' >&2
-        exit 1
-      fi
-    ;;
-	  -ctsz|--custom-timeseries-zone)
-      if [ -n "$2" ]; then
-        TIMESERIES_ZONE_ID=$2
-        shift
-      else
-        printf 'ERROR: "--custom-timeseries-zone" requires a non-empty option argument.\n' >&2
-        exit 1
-      fi
-      ;;
-    *)
+	      *)
       QUICKSTART_ARGS+=" $1"
       #echo $1
     ;;
@@ -80,7 +44,7 @@ SKIP_SETUP=false
 SKIP_PULL=false
 SCRIPT="-script build-basic-app.sh -script-readargs build-basic-app-readargs.sh"
 SIMULATION_FILE="data-exchange-simulator/scripts/sample-simulation.json"
-QUICKSTART_ARGS="-pxclimin 0.6.18 -sim -sim-file $SIMULATION_FILE $SCRIPT"
+QUICKSTART_ARGS="-pxclimin 0.6.18 -tiu required -cci required -ccs required -ctsz required -sim -sim-file $SIMULATION_FILE $SCRIPT"
 VERSION_JSON="version.json"
 PREDIX_SCRIPTS=predix-scripts
 REPO_NAME=data-exchange-simulator
@@ -145,31 +109,14 @@ getPredixScripts
 #clone the repo itself if running from oneclick script
 getCurrentRepo
 
-# Prompt user for uaa & ts services
-if [[ "$TRUSTED_ISSUER_ID" == "" ]]; then
-  read -p $'\nEnter the URL of the Timeseries UAA instance with /oauth/token at the end. \nHint: in another terminal window, type "predix service-info my-uaa-name-here" \nOr: check your APM welcome email\nOr: in APM go to Admin/Setup/Token Request URL> ' TRUSTED_ISSUER_ID
-# else
-#   SIMULATOR_UAA=$TRUSTED_ISSUER_ID
-fi
-if [[ "$TIMESERIES_ZONE_ID" == "" ]]; then
-  read -p $'\nEnter your Predix Time Series Zone ID. \nHint:in another terminal window, type "predix service-info my-timeseries-name-here" look for zone-http-header-value \nOr: check your APM welcome email> ' TIMESERIES_ZONE_ID
-# else
-#   SIMULATOR_TIME_SERIES=$CUSTOM_TIMESERIES_INSTANCE
-fi
-if [[ "$UAA_CLIENTID_GENERIC" == "" ]]; then
-  read -p $'\nEnter your UAA client ID. (UAA Client must have authorities for your time series zone.) \nHint:  many tutorials use "app_client_id" \nOr: for APM check your APM welcome email> ' UAA_CLIENTID_GENERIC
-fi
-if [[ "$UAA_CLIENTID_GENERIC_SECRET" == "" ]]; then
-  read -p $'\nEnter your UAA client secret. \nHint: many tutorials use "secret" \nOr: for APM check your APM welcome email> ' UAA_CLIENTID_GENERIC_SECRET
-fi
-
-export TRUSTED_ISSUER_ID
-export TIMESERIES_ZONE_ID
-export UAA_CLIENTID_GENERIC
-export UAA_CLIENTID_GENERIC_SECRET
-
-# QUICKSTART_ARGS+=" --custom-uaa $SIMULATOR_UAA --custom-timeseries $SIMULATOR_TIME_SERIES"
-#echo "quickstart_args=$QUICKSTART_ARGS"
+COLUMNS=$(tput cols)
+mkdir -p predix-scripts/log
+__append_new_head_log "Data Exchange Simulator script" "-" "predix-scripts/log"
+__append_new_line_log "This script will install a Data Simulator in your Predix cloud account's space.  You will need to log in to the cloud and also provide some info in order for the Simulator to send data to your secure Time Series Zone.  It is assumed you have an existing Time Series instance." "predix-scripts/log"
+__append_new_line_log "" "predix-scripts/log"
+__append_new_line_log "Please look up the info and provide answers to the prompts." "predix-scripts/log"
+__append_new_line_log "" "predix-scripts/log"
+__append_new_line_log "The simulator works for a standalone Predix Time Series or with APM Time Series.  Enter the appropriate info for your situation." "predix-scripts/log"
 
 source $PREDIX_SCRIPTS/bash/quickstart.sh $QUICKSTART_ARGS
 

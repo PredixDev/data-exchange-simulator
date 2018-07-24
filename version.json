@@ -1,11 +1,11 @@
 {
   "name": "Data Exchange Simulator",
-  "version": "1.0.73",
+  "version": "1.0.74",
   "private": true,
   "dependencies": {
-    "local-setup": "https://github.com/PredixDev/local-setup#1.0.96",
-    "predix-scripts": "https://github.com/PredixDev/predix-scripts#1.1.147",
-    "data-exchange-simulator": "https://github.com/PredixDev/data-exchange-simulator#1.0.73"
+    "local-setup": "https://github.com/PredixDev/local-setup#1.0.99",
+    "predix-scripts": "https://github.com/PredixDev/predix-scripts#1.1.148",
+    "data-exchange-simulator": "https://github.com/PredixDev/data-exchange-simulator#1.0.74"
   },
   "author": "swapnavad,susheelchoudhari"
 }

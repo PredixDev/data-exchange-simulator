@@ -38,8 +38,8 @@ SET SHELL_SCRIPT_NAME=quickstart-dx-simulator.sh
 SET APP_DIR="dx-simulator"
 SET APP_NAME="Data Exchange Simulator"
 
-SET TOOLS=Cloud Foundry CLI, Git, Java JDK, Maven, Predix CLI
-SET TOOLS_SWITCHES=/cf /git /jdk /maven /predixcli
+SET TOOLS=Cloud Foundry CLI, Git, Predix CLI
+SET TOOLS_SWITCHES=/cf /git /predixcli
 
 SET SHELL_SCRIPT_URL=https://raw.githubusercontent.com/PredixDev/!REPO_NAME!/!BRANCH!/scripts/!SHELL_SCRIPT_NAME!
 SET VERSION_JSON_URL=https://raw.githubusercontent.com/PredixDev/!REPO_NAME!/!BRANCH!/version.json
