@@ -1,11 +1,13 @@
 package com.ge.predix.solsvc.simulator.controller;
 
 import com.ge.predix.entity.simulator.Simulation;
+
 import com.ge.predix.entity.simulator.Tag;
 import com.ge.predix.entity.simulator.TagSet;
 import com.ge.predix.solsvc.simulator.service.DataSimulatorService;
 import com.ge.predix.solsvc.simulator.types.DataSimulatorResponse;
 import org.apache.commons.lang.StringUtils;
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +60,33 @@ public class DataSimulatorController
     }
 
     /**
+     * @return -
+     */
+    @SuppressWarnings({
+            "nls", "unchecked"
+    })
+    @RequestMapping(value = "/simulations", method = RequestMethod.GET)
+    public @ResponseBody DataSimulatorResponse getSimulations()
+    {
+        DataSimulatorResponse response = new DataSimulatorResponse();
+        try
+        {
+            JSONObject obj = new JSONObject();
+
+            obj.put("current-simulations", this.mapOfListOfThreads.keySet());
+            response.setIsError(Boolean.FALSE);
+            response.setResponseString(obj.toJSONString());
+        }
+        catch (Throwable e)
+        {
+            log.error("get simulations failed", e);
+            response.setIsError(Boolean.TRUE);
+            response.setErrorMessage(e.getMessage());
+        }
+        return response;   
+    }
+ 
+        /**
      * @param simulation -
      * @return -
      */
