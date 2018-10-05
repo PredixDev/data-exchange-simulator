@@ -38,10 +38,13 @@ function local_read_args() {
   fi
 }
 
+# default settings
 BRANCH="master"
 PRINT_USAGE=0
 SKIP_SETUP=false
 SKIP_PULL=false
+
+IZON_SH="https://raw.githubusercontent.com/PredixDev/izon/1.1.0/izon2.sh"
 SCRIPT="-script build-basic-app.sh -script-readargs build-basic-app-readargs.sh"
 SIMULATION_FILE="data-exchange-simulator/scripts/sample-simulation.json"
 QUICKSTART_ARGS="-pxclimin 0.6.18 -tiu required -cci required -ccs required -ctsz required -sim -sim-file $SIMULATION_FILE $SCRIPT"
@@ -50,13 +53,17 @@ PREDIX_SCRIPTS=predix-scripts
 REPO_NAME=data-exchange-simulator
 APP_DIR="dx-simulator"
 APP_NAME="Data Exchange Simulator"
+GITHUB_RAW="https://raw.githubusercontent.com/PredixDev"
 SCRIPT_NAME=quickstart-dx-simulator.sh
 TOOLS="Cloud Foundry CLI, Git, Predix CLI"
 TOOLS_SWITCHES="--cf --git --predixcli"
 
+# Process switches
 local_read_args $@
-IZON_SH="https://raw.githubusercontent.com/PredixDev/izon/$BRANCH/izon.sh"
-VERSION_JSON_URL="https://raw.githubusercontent.com/PredixDev/data-exchange-simulator/$BRANCH/version.json"
+
+#variables after processing switches
+SCRIPT_LOC="$GITHUB_RAW/$REPO_NAME/$BRANCH/scripts/$SCRIPT_NAME"
+VERSION_JSON_URL="$GITHUB_RAW/data-exchange-simulator/$BRANCH/version.json"
 
 function check_internet() {
   set +e
@@ -89,7 +96,7 @@ function init() {
   eval "$(curl -s -L $IZON_SH)"
 
   getVersionFile
-  getLocalSetupFuncs
+  getLocalSetupFuncs $GITHUB_RAW
 }
 
 if [[ $PRINT_USAGE == 1 ]]; then
