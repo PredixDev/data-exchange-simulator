@@ -11,8 +11,8 @@ set TSZONEID [lindex $argv 4];
 # Steps
 # 1. Run the quick-start-script
 
-spawn curl $SCRIPT_LOCATION/quickstart-dx-simulator.sh
-spawn chmod 755 quickstart-dx-simulator.sh
+#spawn curl $SCRIPT_LOCATION/quickstart-dx-simulator.sh
+#spawn chmod 755 quickstart-dx-simulator.sh
 
 spawn ./quickstart-dx-simulator.sh $MORE_SWITCHES -i $INSTANCEPREFIX
 set timeout 60
