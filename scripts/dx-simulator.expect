@@ -15,7 +15,7 @@ set TSZONEID [lindex $argv 4];
 #spawn chmod 755 quickstart-dx-simulator.sh
 
 spawn ./quickstart-dx-simulator.sh $MORE_SWITCHES -i $INSTANCEPREFIX
-set timeout 60
+set timeout 100
 expect "*\nOr: in APM go to the Menu option: Admin/Setup/Token Request URL> " 
 send "$ISSUREID\r"
 set timeout 10
