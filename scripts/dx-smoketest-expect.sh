@@ -10,6 +10,6 @@ chmod 755 dx-simulator.expect
 curl -O  https://raw.githubusercontent.com/PredixDev/data-exchange-simulator/master/scripts/quickstart-dx-simulator.sh
 chmod 755 quickstart-dx-simulator.sh
 ls 
-export TERMINFO=/usr/lib/terminfo
-echo $TERMINFO
+#export TERMINFO=/usr/lib/terminfo
+#echo $TERMINFO
 expect dx-simulator.expect https://raw.githubusercontent.com/PredixDev/data-exchange-simulator/master/scripts $1 $2 $3 $4
