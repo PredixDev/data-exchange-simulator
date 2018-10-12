@@ -15,6 +15,22 @@ function local_read_args() {
       QUICKSTART_ARGS+=" $1 $2"
       shift
     ;;
+     -cci|--custom-client-id)
+      QUICKSTART_ARGS+=" $1 $2"
+      shift
+    ;;
+    -ccs|--custom-client-secret)
+      QUICKSTART_ARGS+=" $1 $2"
+      shift
+     ;;
+    -tiu|--trusted-issuer-url)
+      QUICKSTART_ARGS+=" $1 $2"
+      shift
+    ;;
+     -ctsz|--custom-timeseries-zone)
+      QUICKSTART_ARGS+=" $1 $2"
+      shift
+    ;;
     -o|--override)
       QUICKSTART_ARGS=" $SCRIPT"
     ;;
@@ -26,7 +42,7 @@ function local_read_args() {
     ;;
 	      *)
       QUICKSTART_ARGS+=" $1"
-      #echo $1
+      echo $1
     ;;
   esac
   shift
@@ -47,19 +63,41 @@ SKIP_PULL=false
 IZON_SH="https://raw.githubusercontent.com/PredixDev/izon/1.1.0/izon2.sh"
 SCRIPT="-script build-basic-app.sh -script-readargs build-basic-app-readargs.sh"
 SIMULATION_FILE="data-exchange-simulator/scripts/sample-simulation.json"
-QUICKSTART_ARGS="-pxclimin 0.6.18 -tiu required -cci required -ccs required -ctsz required -sim -sim-file $SIMULATION_FILE $SCRIPT"
+#QUICKSTART_ARGS="-pxclimin 0.6.18 -tiu required -cci required -ccs required -ctsz required -sim -sim-file $SIMULATION_FILE $SCRIPT"
+QUICKSTART_ARGS="-pxclimin 0.6.18 -sim -sim-file $SIMULATION_FILE $SCRIPT"
 VERSION_JSON="version.json"
 PREDIX_SCRIPTS=predix-scripts
 REPO_NAME=data-exchange-simulator
 APP_DIR="dx-simulator"
 APP_NAME="Data Exchange Simulator"
-GITHUB_RAW="https://raw.githubusercontent.com/PredixDev"
+GITHUB_RAW="https://github.build.ge.com/raw/adoption"
 SCRIPT_NAME=quickstart-dx-simulator.sh
 TOOLS="Cloud Foundry CLI, Git, Predix CLI"
 TOOLS_SWITCHES="--cf --git --predixcli"
 
+
 # Process switches
 local_read_args $@
+
+
+if [[ $QUICKSTART_ARGS != *"-ctsz"* ]]; then
+ 
+  QUICKSTART_ARGS+=" -ctsz required "
+fi
+if [[ $QUICKSTART_ARGS != *"-tiu"* ]]; then
+
+  QUICKSTART_ARGS+=" -tiu required"
+fi
+if [[ $QUICKSTART_ARGS != *"-ccs"* ]]; then
+
+  QUICKSTART_ARGS+=" -ccs required "
+fi
+if [[ $QUICKSTART_ARGS != *"-cci"* ]]; then
+
+  QUICKSTART_ARGS+=" -cci required "
+fi
+
+echo $QUICKSTART_ARGS
 
 #variables after processing switches
 SCRIPT_LOC="$GITHUB_RAW/$REPO_NAME/$BRANCH/scripts/$SCRIPT_NAME"
