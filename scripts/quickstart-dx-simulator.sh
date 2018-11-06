@@ -60,7 +60,7 @@ PRINT_USAGE=0
 SKIP_SETUP=false
 SKIP_PULL=false
 
-IZON_SH="https://raw.githubusercontent.com/PredixDev/izon/1.1.0/izon2.sh"
+IZON_SH="https://raw.githubusercontent.com/PredixDev/izon/1.2.0/izon2.sh"
 SCRIPT="-script build-basic-app.sh -script-readargs build-basic-app-readargs.sh"
 SIMULATION_FILE="data-exchange-simulator/scripts/sample-simulation.json"
 #QUICKSTART_ARGS="-pxclimin 0.6.18 -tiu required -cci required -ccs required -ctsz required -sim -sim-file $SIMULATION_FILE $SCRIPT"
@@ -159,7 +159,7 @@ getPredixScripts
 #clone the repo itself if running from oneclick script
 getCurrentRepo
 
-#COLUMNS=$(tput cols)
+COLUMNS=$(tput cols)
 mkdir -p predix-scripts/log
 __append_new_head_log "Data Exchange Simulator script" "-" "predix-scripts/log"
 __append_new_line_log "This script will install a Data Simulator in your Predix cloud account's space.  You will need to log in to the cloud and also provide some info in order for the Simulator to send data to your secure Time Series Zone.  It is assumed you have an existing Time Series instance." "predix-scripts/log"

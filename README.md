@@ -1,7 +1,7 @@
-<a href="../../../../pages/adoption/data-exchange-simulator/javadocs/index.html" target="_blank" >
+<a href="http://predixdev.github.io/data-exchange-simulator/javadocs/index.html" target="_blank" >
 	<img height="50px" width="100px" src="images/javadoc.png" alt="view javadoc"></a>
 &nbsp;
-<a href="../../../../pages/adoption/data-exchange-simulator" target="_blank">
+<a href="http://predixdev.github.io/data-exchange-simulator" target="_blank">
 	<img height="50px" width="100px" src="images/pages.jpg" alt="view github pages">
 </a>
 
