@@ -159,6 +159,7 @@ getPredixScripts
 #clone the repo itself if running from oneclick script
 getCurrentRepo
 
+echo "in tput cols check"
 #COLUMNS=$(tput cols)
 
 mkdir -p predix-scripts/log
