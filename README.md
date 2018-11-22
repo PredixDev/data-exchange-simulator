@@ -148,4 +148,4 @@ curl -X GET http://localhost:8080/simulations -H 'cache-control: no-cache' -H 'C
 
 
 
-[![Analytics](https://ga-beacon.appspot.com/UA-82773213-1/data-exchange-simulator/readme?pixel)](https://github.com/PredixDev)
+[![Analytics](https://predix-beacon.appspot.com/UA-82773213-1/data-exchange-simulator/readme?pixel)](https://github.com/PredixDev)
