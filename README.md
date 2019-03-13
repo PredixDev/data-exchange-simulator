@@ -81,7 +81,7 @@ On Windows, open a Command window and run the following command.
 
 To see all the details of the simulation, you can open the simulation file that was downloaded by the script: 
 
-https://raw.githubusercontent.com/PredixDev/data-exchange-simulator/develop/scripts/sample-simulation.json
+https://raw.githubusercontent.com/PredixDev/data-exchange-simulator/master/scripts/sample-simulation.json
 
 The simulator json API has the following characteristics:
 
